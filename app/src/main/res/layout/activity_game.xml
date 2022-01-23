@@ -19,75 +19,56 @@
 
     <LinearLayout
         android:id="@+id/ll_player"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/tv_vs"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_game">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_condensed_bold"
             android:text="@string/text_player"
+            android:textColor="@color/color_blue"
             android:textSize="@dimen/_26ssp"
-            android:textStyle="bold"
-            android:textColor="@color/color_blue"/>
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_game_rock"
+            ivComputerRock<ImageView
+                android:id="@+id/iv_player_rock"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color_select_character"
-                app:cardCornerRadius="@dimen/_20sdp">
+                android:layout_gravity="center"
+                android:src="@drawable/ic_rock" />
 
-                <ImageView
-                    android:id="@+id/iv_player_rock"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_rock" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_game_paper"
+            <ImageView
+                android:id="@+id/iv_player_paper"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color_select_character"
-                app:cardCornerRadius="@dimen/_20sdp">
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:src="@drawable/ic_paper" />
 
-                <ImageView
-                    android:id="@+id/iv_player_paper"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_paper" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_game_scissor"
+            <ImageView
+                android:id="@+id/iv_player_scissor"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color_select_character"
-                app:cardCornerRadius="@dimen/_20sdp">
-
-                <ImageView
-                    android:id="@+id/iv_player_scissor"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_scissor" />
-            </androidx.cardview.widget.CardView>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_scissor" />
         </LinearLayout>
     </LinearLayout>
 
@@ -95,86 +76,66 @@
         android:id="@+id/tv_vs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_vs"
-        android:textSize="@dimen/_30ssp"
-        android:textStyle="bold"
+        android:fontFamily="@font/open_sans_condensed_bold"
+        android:padding="@dimen/_16sdp"
         android:textColor="@color/color_red"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_26sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/ll_computer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_player"
+        tools:text="@string/text_vs" />
 
     <LinearLayout
         android:id="@+id/ll_computer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_30sdp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_game">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_vs">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_condensed_bold"
             android:text="@string/text_computer"
+            android:textColor="@color/color_blue"
             android:textSize="@dimen/_26ssp"
-            android:textStyle="bold"
-            android:textColor="@color/color_blue"/>
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_computer_rock"
+            <ImageView
+                android:id="@+id/iv_computer_rock"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color_select_character"
-                app:cardCornerRadius="@dimen/_20sdp">
+                android:layout_gravity="center"
+                android:src="@drawable/ic_rock" />
 
-                <ImageView
-                    android:id="@+id/iv_computer_rock"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_rock" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_computer_paper"
+            <ImageView
+                android:id="@+id/iv_computer_paper"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color_select_character"
-                app:cardCornerRadius="@dimen/_20sdp">
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:src="@drawable/ic_paper" />
 
-                <ImageView
-                    android:id="@+id/iv_computer_paper"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_paper" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_computer_scissor"
+            <ImageView
+                android:id="@+id/iv_computer_scissor"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color_select_character"
-                app:cardCornerRadius="@dimen/_20sdp">
-
-                <ImageView
-                    android:id="@+id/iv_computer_scissor"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_scissor" />
-            </androidx.cardview.widget.CardView>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_scissor" />
         </LinearLayout>
     </LinearLayout>
 
@@ -182,13 +143,14 @@
         android:id="@+id/tv_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="RESTART"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:fontFamily="@font/open_sans_condensed_bold"
+        android:textColor="@color/color_blue"
         android:textSize="@dimen/_30ssp"
         android:textStyle="bold"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:textColor="@color/color_blue"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/text_restart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

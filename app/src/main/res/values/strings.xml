@@ -3,4 +3,8 @@
     <string name="text_player">Player</string>
     <string name="text_computer">Computer</string>
     <string name="text_vs">VS</string>
+    <string name="text_restart">RESTART</string>
+    <string name="text_draw">DRAW</string>
+    <string name="text_comp_win">Computer WIN!</string>
+    <string name="text_player_win">Player WIN!</string>
 </resources>
