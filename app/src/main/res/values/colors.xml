@@ -12,4 +12,7 @@
     <color name="color_bg_game">#FCFCFC</color>
     <color name="color_red">#FF1200</color>
     <color name="color_blue">#00ABFC</color>
+    <color name="color_light_purle">#9AB3FF</color>
+    <color name="color_purle">#9470B6</color>
+    <color name="color_orange">#F29D38</color>
 </resources>

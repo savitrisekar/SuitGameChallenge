@@ -1,4 +1,4 @@
-package com.binar.suitgamechallenge.enum
+package com.binar.suitgamechallenge.data.enum
 
 enum class SuitCharacter(val value: Int) {
     IDLE(-1),

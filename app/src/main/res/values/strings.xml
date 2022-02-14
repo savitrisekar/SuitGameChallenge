@@ -1,10 +1,25 @@
 <resources>
     <string name="app_name">SGC</string>
     <string name="text_player">Player</string>
+    <string name="text_player_two">Player 2</string>
     <string name="text_computer">Computer</string>
     <string name="text_vs">VS</string>
     <string name="text_restart">RESTART</string>
     <string name="text_draw">DRAW</string>
     <string name="text_comp_win">Computer WIN!</string>
     <string name="text_player_win">Player WIN!</string>
+    <string name="text_play_with_player">Play with player</string>
+    <string name="text_play_with_computer">Play with computer</string>
+    <string name="text_input_name">Enter new name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_validation_name">Hello</string>
+    <string name="text_pilih_lawanmu">Choose your enemy</string>
+    <string name="text_name">Zen</string>
+    <string name="text_game_result">Game Result</string>
+    <string name="text_play_again">Play again</string>
+    <string name="text_back_to_main_menu">Back to main menu</string>
+    <string name="text_blank">Please enter your name</string>
+    <string name="text_player_turn">Player 1 turn</string>
+    <string name="text_lock_player_one">LOCK</string>
 </resources>

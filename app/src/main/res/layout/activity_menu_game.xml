@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.menu.MenuGameActivity">
+
+    <TextView
+        android:id="@+id/tv_title_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fontFamily="@font/comicneue_bold"
+        android:gravity="center"
+        android:text="@string/text_pilih_lawanmu"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_24ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_player_with_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_menu">
+
+        <ImageView
+            android:id="@+id/iv_play_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play_with_player" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_16sdp">
+
+            <TextView
+                android:id="@+id/tv_player_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comicneue_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
+                tools:text="@string/text_name" />
+
+            <TextView
+                android:id="@+id/tv_versus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comicneue_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
+                android:text="@string/text_vs"
+                android:textAllCaps="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"/>
+
+            <TextView
+                android:id="@+id/tv_player_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comicneue_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
+                android:text="@string/text_player" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_player_with_computer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_player_with_player">
+
+        <ImageView
+            android:id="@+id/iv_play_computer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play_with_computer" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_16sdp">
+
+            <TextView
+                android:id="@+id/tv_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comicneue_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
+                tools:text="@string/text_name" />
+
+            <TextView
+                android:id="@+id/tv_versus_computer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comicneue_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
+                android:text="@string/text_vs"
+                android:textAllCaps="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"/>
+
+            <TextView
+                android:id="@+id/tv_player_computer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comicneue_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
+                android:text="@string/text_computer" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

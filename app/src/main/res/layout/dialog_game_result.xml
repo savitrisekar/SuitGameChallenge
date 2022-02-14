@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_16sdp">
+
+    <TextView
+        android:id="@+id/tv_title_game_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fontFamily="@font/comicneue_bold"
+        android:text="@string/text_game_result"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_game_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fontFamily="@font/comicneue_bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_24ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_game_result"
+        tools:text="@string/text_game_result" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_play_again"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="@string/text_play_again"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_14ssp"
+        app:backgroundTint="@color/color_purle"
+        app:cornerRadius="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/tv_game_result" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="@string/text_back_to_main_menu"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_14ssp"
+        app:backgroundTint="@color/color_orange"
+        app:cornerRadius="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/btn_play_again" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

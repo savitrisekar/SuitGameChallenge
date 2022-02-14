@@ -31,15 +31,17 @@
         app:layout_constraintTop_toBottomOf="@id/iv_game">
 
         <TextView
+            android:id="@+id/tv_player_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_condensed_bold"
-            android:text="@string/text_player"
             android:textColor="@color/color_blue"
             android:textSize="@dimen/_26ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="@string/text_player" />
 
         <LinearLayout
+            android:id="@+id/ll_player_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -47,12 +49,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            ivComputerRock<ImageView
+            <ImageView
                 android:id="@+id/iv_player_rock"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_rock" />
+                android:src="@drawable/ic_rock"
+                tools:background="@drawable/bg_select_character"/>
 
             <ImageView
                 android:id="@+id/iv_player_paper"
@@ -61,14 +64,16 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
-                android:src="@drawable/ic_paper" />
+                android:src="@drawable/ic_paper"
+                tools:background="@drawable/bg_select_character"/>
 
             <ImageView
                 android:id="@+id/iv_player_scissor"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_scissor" />
+                android:src="@drawable/ic_scissor"
+                tools:background="@drawable/bg_select_character"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -78,14 +83,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_condensed_bold"
         android:padding="@dimen/_16sdp"
+        android:text="@string/text_vs"
         android:textColor="@color/color_red"
         android:textSize="@dimen/_26sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/ll_computer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_player"
-        tools:text="@string/text_vs" />
+        app:layout_constraintTop_toBottomOf="@id/ll_player" />
 
     <LinearLayout
         android:id="@+id/ll_computer"
@@ -99,15 +104,17 @@
         app:layout_constraintTop_toBottomOf="@id/tv_vs">
 
         <TextView
+            android:id="@+id/tv_player_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_condensed_bold"
-            android:text="@string/text_computer"
             android:textColor="@color/color_blue"
             android:textSize="@dimen/_26ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="@string/text_computer" />
 
         <LinearLayout
+            android:id="@+id/ll_player_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
@@ -119,7 +126,8 @@
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_rock" />
+                android:src="@drawable/ic_rock"
+                tools:background="@drawable/bg_select_character"/>
 
             <ImageView
                 android:id="@+id/iv_computer_paper"
@@ -128,29 +136,52 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
-                android:src="@drawable/ic_paper" />
+                android:src="@drawable/ic_paper"
+                tools:background="@drawable/bg_select_character"/>
 
             <ImageView
                 android:id="@+id/iv_computer_scissor"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_scissor" />
+                android:src="@drawable/ic_scissor"
+                tools:background="@drawable/bg_select_character"/>
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_restart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:fontFamily="@font/open_sans_condensed_bold"
-        android:textColor="@color/color_blue"
-        android:textSize="@dimen/_30ssp"
-        android:textStyle="bold"
+<!--    <TextView-->
+<!--        android:id="@+id/tv_lock"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="@dimen/_16sdp"-->
+<!--        android:fontFamily="@font/open_sans_condensed_bold"-->
+<!--        android:text="@string/text_lock_player_one"-->
+<!--        android:textColor="@color/color_blue"-->
+<!--        android:textSize="@dimen/_24ssp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_restart"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_margin="@dimen/_16sdp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        app:backgroundTint="@color/color_blue"
+        app:icon="@drawable/ic_restart"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="@dimen/_25sdp"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/text_restart" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.SuitGameChallenge.Button.Circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

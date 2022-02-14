@@ -1,15 +1,21 @@
 package com.binar.suitgamechallenge.ui.game
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.binar.suitgamechallenge.R
+import com.binar.suitgamechallenge.data.enum.SuitCharacter
+import com.binar.suitgamechallenge.data.enum.SuitCharacterSide
+import com.binar.suitgamechallenge.data.preference.UserPreference
 import com.binar.suitgamechallenge.databinding.ActivityGameBinding
-import com.binar.suitgamechallenge.enum.SuitCharacter
-import com.binar.suitgamechallenge.enum.SuitCharacterSide
+import com.binar.suitgamechallenge.ui.menu.MenuGameActivity
+import com.binar.suitgamechallenge.utils.DialogUtils
 import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
@@ -18,15 +24,44 @@ class GameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGameBinding
 
-    private var playerPosition: Int = -1
-    private var compPosition: Int = -1
+    private var playerOnePosition: Int = -1
+    private var playerTwoPosition: Int = -1
     private var isGameFinished: Boolean = false
+
+    private var gamePlayMode: Int = GAMEPLAY_MODE_VS_COMPUTER
+    private var playTurn: SuitCharacterSide = SuitCharacterSide.PLAYER
+
+    companion object {
+        private const val EXTRAS_GAME_MODE = "EXTRAS_GAME_MODE"
+        const val GAMEPLAY_MODE_VS_COMPUTER = 0
+        const val GAMEPLAY_MODE_VS_PLAYER = 1
+
+        fun startActivity(context: Context, gameplayMode: Int) {
+            val intent = Intent(context, GameActivity::class.java)
+            intent.putExtra(EXTRAS_GAME_MODE, gameplayMode)
+            context.startActivity(intent)
+        }
+    }
+
+    private fun getIntentData() {
+        gamePlayMode = intent.getIntExtra(EXTRAS_GAME_MODE, gamePlayMode)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindView()
+        getIntentData()
+        setPlayerName()
         setInitialState()
         setClickListener()
+    }
+
+    private fun showUIPlayer(suitCharacterSide: SuitCharacterSide, isVisible: Boolean) {
+        if (suitCharacterSide == SuitCharacterSide.PLAYER) {
+            binding.llPlayerOne.isVisible = isVisible
+        } else {
+            binding.llPlayerTwo.isVisible = isVisible
+        }
     }
 
     private fun bindView() {
@@ -35,84 +70,150 @@ class GameActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private fun setInitialState() {
-        selectPlayer(playerPosition, SuitCharacterSide.PLAYER)
-        selectPlayer(compPosition, SuitCharacterSide.COMPUTER)
+    private fun setPlayerName() {
+        binding.tvPlayerOne.text = UserPreference(this).name
+        if (gamePlayMode == GAMEPLAY_MODE_VS_PLAYER) {
+            binding.tvPlayerTwo.text = getString(R.string.text_player_two)
+        } else {
+            binding.tvPlayerTwo.text = getString(R.string.text_computer)
+        }
+    }
 
+    private fun setInitialState() {
+        selectPlayer(playerOnePosition, SuitCharacterSide.PLAYER)
+        selectPlayer(playerTwoPosition, SuitCharacterSide.ENEMY)
         binding.tvVs.text = getString(R.string.text_vs)
-        binding.tvRestart.visibility = View.INVISIBLE
+        binding.btnRestart.visibility = View.INVISIBLE
+        //check game mode
+        if (gamePlayMode == GAMEPLAY_MODE_VS_PLAYER) {
+            Toast.makeText(this, getString(R.string.text_player_turn), Toast.LENGTH_SHORT).show()
+            showUIPlayer(SuitCharacterSide.PLAYER, true)
+            showUIPlayer(SuitCharacterSide.ENEMY, false)
+            //show lock player 1
+            binding.tvVs.text = getString(R.string.text_lock_player_one)
+        } else {
+            binding.tvVs.text = getString(R.string.text_vs)
+        }
     }
 
     private fun setClickListener() {
-
         binding.ivPlayerRock.setOnClickListener {
             if (!isGameFinished) {
-                playerPosition = 0
-                startGame()
+                if (playTurn == SuitCharacterSide.PLAYER) {
+                    playerOnePosition = 0
+                    selectPlayer(playerOnePosition, SuitCharacterSide.PLAYER)
+                    Log.d(TAG, "playerOnePosition $playerOnePosition")
+
+                    if (gamePlayMode == GAMEPLAY_MODE_VS_COMPUTER) {
+                        startGame()
+                    } else {
+                        binding.tvVs.visibility = View.VISIBLE
+                    }
+                } else {
+                    playerTwoPosition = 0
+                    selectPlayer(playerTwoPosition, SuitCharacterSide.PLAYER)
+                    Log.d(TAG, "playerTwoPosition $playerTwoPosition")
+                    binding.tvVs.visibility = View.VISIBLE
+                }
             }
         }
 
         binding.ivPlayerPaper.setOnClickListener {
             if (!isGameFinished) {
-                playerPosition = 1
-                startGame()
+                if (playTurn == SuitCharacterSide.PLAYER) {
+                    playerOnePosition = 1
+                    selectPlayer(playerOnePosition, SuitCharacterSide.PLAYER)
+                    Log.d(TAG, "playerOnePosition $playerOnePosition")
+
+                    if (gamePlayMode == GAMEPLAY_MODE_VS_COMPUTER) {
+                        startGame()
+                    } else {
+                        binding.tvVs.visibility = View.VISIBLE
+                    }
+                } else {
+                    playerTwoPosition = 1
+                    selectPlayer(playerTwoPosition, SuitCharacterSide.PLAYER)
+                    Log.d(TAG, "playerTwoPosition $playerTwoPosition")
+                    binding.tvVs.visibility = View.VISIBLE
+                }
             }
         }
 
         binding.ivPlayerScissor.setOnClickListener {
             if (!isGameFinished) {
-                playerPosition = 2
-                startGame()
+                if (playTurn == SuitCharacterSide.PLAYER) {
+                    playerOnePosition = 2
+                    selectPlayer(playerOnePosition, SuitCharacterSide.PLAYER)
+                    Log.d(TAG, "playerOnePosition $playerOnePosition")
+
+                    if (gamePlayMode == GAMEPLAY_MODE_VS_COMPUTER) {
+                        startGame()
+                    } else {
+                        binding.tvVs.visibility = View.VISIBLE
+                    }
+                } else {
+                    playerTwoPosition = 2
+                    selectPlayer(playerTwoPosition, SuitCharacterSide.PLAYER)
+                    Log.d(TAG, "playerTwoPosition $playerTwoPosition")
+                    binding.tvVs.visibility = View.VISIBLE
+                }
             }
         }
 
-        binding.tvRestart.setOnClickListener {
+        binding.btnRestart.setOnClickListener {
+            Log.d(TAG, "click")
             if (isGameFinished) {
                 isGameFinished = false
                 resetGame()
             }
         }
+
+        binding.tvVs.setOnClickListener {
+            if (playTurn == SuitCharacterSide.PLAYER) {
+                playTurn = SuitCharacterSide.ENEMY
+                selectPlayer(playerTwoPosition, SuitCharacterSide.PLAYER)
+                binding.tvVs.visibility = View.INVISIBLE
+                Toast.makeText(this, getString(R.string.text_lock_player_one), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                startGame()
+            }
+        }
     }
 
     private fun startGame() {
-        //random computer
-        compPosition = Random.nextInt(0, 3)
-        //set select player
-        selectPlayer(playerPosition, SuitCharacterSide.PLAYER)
-        Log.d(TAG, "player: $playerPosition")
-        //set select computer
-        selectPlayer(compPosition, SuitCharacterSide.COMPUTER)
-        Log.d(TAG, "computer: $compPosition")
+        if (gamePlayMode == GAMEPLAY_MODE_VS_COMPUTER) {
+            //random computer
+            playerTwoPosition = Random.nextInt(0, 3)
+            //set select computer
+            selectPlayer(playerTwoPosition, SuitCharacterSide.ENEMY)
+            Log.d(TAG, "player two: $playerTwoPosition")
+            binding.btnRestart.visibility = View.VISIBLE
+        }
 
         //proceed winner
         when {
-            playerPosition == compPosition -> {
-                binding.tvVs.text = getString(R.string.text_draw)
+            playerOnePosition == playerTwoPosition -> {
+                showCustomDialog(getString(R.string.text_draw))
             }
-            (playerPosition + 1) % 3 == compPosition -> {
-                binding.tvVs.text = getString(R.string.text_comp_win)
+            (playerOnePosition + 1) % 3 == playerTwoPosition -> {
+                showCustomDialog(getString(R.string.text_comp_win))
             }
             else -> {
-                binding.tvVs.text = getString(R.string.text_player_win)
+                showCustomDialog(getString(R.string.text_player_win))
             }
         }
-
         isGameFinished = true
-        binding.tvRestart.visibility = View.VISIBLE
     }
 
     private fun resetGame() {
-        isGameFinished = false
-        binding.tvVs.text = getString(R.string.text_vs)
-        binding.tvRestart.visibility = View.INVISIBLE
-
-        binding.ivPlayerRock.setBackgroundColor(0)
-        binding.ivPlayerPaper.setBackgroundColor(0)
-        binding.ivPlayerScissor.setBackgroundColor(0)
-
-        binding.ivComputerRock.setBackgroundColor(0)
-        binding.ivComputerPaper.setBackgroundColor(0)
-        binding.ivComputerScissor.setBackgroundColor(0)
+        if (isGameFinished) {
+            isGameFinished = false
+            playerOnePosition = -1
+            playerTwoPosition = -1
+            Log.d(TAG, "Game Restarted")
+            setInitialState()
+        }
     }
 
     private fun selectPlayer(
@@ -136,13 +237,37 @@ class GameActivity : AppCompatActivity() {
         when (SuitCharacter.getByValue(suitCharacter)) {
             SuitCharacter.ROCK -> {
                 ivRock.setBackgroundResource(R.drawable.bg_select_character)
+                ivPaper.setBackgroundResource(0)
+                ivScissor.setBackgroundResource(0)
             }
             SuitCharacter.PAPER -> {
+                ivRock.setBackgroundResource(0)
                 ivPaper.setBackgroundResource(R.drawable.bg_select_character)
+                ivScissor.setBackgroundResource(0)
             }
             SuitCharacter.SCISSOR -> {
+                ivRock.setBackgroundResource(0)
+                ivPaper.setBackgroundResource(0)
                 ivScissor.setBackgroundResource(R.drawable.bg_select_character)
             }
         }
+    }
+
+    private fun showCustomDialog(result: String) {
+        DialogUtils.showResultDialog(this, result) { dialog, value ->
+            if (value == "menu") {
+                navigateToMenu()
+            } else {
+                resetGame()
+            }
+            Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
+            dialog?.dismiss()
+        }
+    }
+
+    private fun navigateToMenu() {
+        val intent = Intent(this, MenuGameActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

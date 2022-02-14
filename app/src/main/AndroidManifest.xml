@@ -10,15 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SuitGameChallenge">
         <activity
-            android:name="com.binar.suitgamechallenge.ui.game.SplashScreenActivity"
-            android:exported="true">
+            android:name=".ui.splash.SplashScreenActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.game.GameActivity" />
+        <activity
+            android:name=".ui.intro.IntroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.menu.MenuGameActivity"
+            android:exported="true"
+            android:theme="@style/SplashScreen"/>
+        <activity
+            android:name=".ui.game.GameActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
